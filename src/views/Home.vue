@@ -1,15 +1,30 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Carousel from '../components/Carousel.vue'
+
+const carouselImages = [
+  {
+    src: 'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1200&h=400&fit=crop',
+    alt: 'Salk Institute Building',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1200&h=400&fit=crop',
+    alt: 'Laboratory Research',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1576086213369-97a306d36557?w=1200&h=400&fit=crop',
+    alt: 'Scientific Equipment',
+  },
+  {
+    src: 'https://images.unsplash.com/photo-1507668077129-56e32842fceb?w=1200&h=400&fit=crop',
+    alt: 'Microscopy Lab',
+  },
+]
+</script>
 
 <template>
   <main>
-    <!-- Hero Image Section -->
-    <div class="w-full">
-      <img
-        src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1200&h=400&fit=crop"
-        alt="Salk Institute"
-        class="w-full h-64 md:h-96 object-cover"
-      />
-    </div>
+    <!-- Hero Carousel Section -->
+    <Carousel :images="carouselImages" :autoplay="true" :interval="5000" />
 
     <!-- Main Content -->
     <div class="max-w-6xl mx-auto px-6 py-12">
