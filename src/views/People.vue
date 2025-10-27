@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { onMounted } from 'vue'
 import PersonCard from '../components/PersonCard.vue'
+import { useScrollAnimation } from '../composables/useScrollAnimation'
 
 interface Link {
   type: 'cv' | 'scholar' | 'email'
@@ -69,27 +71,39 @@ const team: TeamSection[] = [
     ],
   },
 ]
+
+const { fadeInUp, staggerFadeInUp } = useScrollAnimation()
+
+onMounted(() => {
+  fadeInUp('.animate-title')
+  fadeInUp('.animate-section-title')
+  staggerFadeInUp('.animate-card')
+})
 </script>
 
 <template>
   <main class="max-w-7xl mx-auto px-6 py-12">
-    <h1 class="text-4xl font-light text-gray-800 mb-12">People</h1>
+    <h1 class="animate-title text-4xl font-light text-gray-800 mb-12">People</h1>
 
     <!-- Team Sections -->
     <div class="space-y-16">
       <section v-for="(section, sectionIndex) in team" :key="sectionIndex">
         <!-- Section Title -->
-        <h2 class="text-2xl font-semibold text-gray-800 mb-8 border-b-2 border-gray-200 pb-3">
+        <h2
+          class="animate-section-title text-2xl font-semibold text-gray-800 mb-8 border-b-2 border-gray-200 pb-3"
+        >
           {{ section.title }}
         </h2>
 
         <!-- Members Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <PersonCard
+          <div
+            class="animate-card"
             v-for="(member, memberIndex) in section.members"
             :key="memberIndex"
-            :person="member"
-          />
+          >
+            <PersonCard :person="member" />
+          </div>
         </div>
       </section>
     </div>

@@ -52,6 +52,15 @@ const router = createRouter({
       component: Contact,
     },
   ],
+  scrollBehavior(to, from, savedPosition) {
+    // 如果有保存的滚动位置（浏览器前进/后退），使用它
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      // 否则滚动到页面顶部
+      return { top: 0 }
+    }
+  },
 })
 
 export default router

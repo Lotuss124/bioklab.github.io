@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { onMounted } from 'vue'
 import PublicationCard from '../components/PublicationCard.vue'
+import { useScrollAnimation } from '../composables/useScrollAnimation'
 
 interface Publication {
   authors: string
@@ -114,15 +116,27 @@ const sections: PublicationSection[] = [
     ],
   },
 ]
+
+const { fadeInUp, fadeIn } = useScrollAnimation()
+
+onMounted(() => {
+  fadeInUp('.animate-title')
+  fadeInUp('.animate-section')
+  fadeIn('.animate-card')
+})
 </script>
 
 <template>
   <main class="max-w-6xl mx-auto px-6 py-12">
-    <h1 class="text-4xl font-light text-gray-800 mb-12">Publications</h1>
+    <h1 class="animate-title text-4xl font-light text-gray-800 mb-12">Publications</h1>
 
     <!-- Publication Sections -->
     <div class="space-y-16">
-      <section v-for="(section, sectionIndex) in sections" :key="sectionIndex">
+      <section
+        class="animate-section"
+        v-for="(section, sectionIndex) in sections"
+        :key="sectionIndex"
+      >
         <!-- Section Title -->
         <div class="flex items-center gap-4 mb-8">
           <h2 class="text-3xl font-semibold text-gray-800">{{ section.title }}</h2>
@@ -132,11 +146,9 @@ const sections: PublicationSection[] = [
 
         <!-- Publication Cards -->
         <div class="space-y-6">
-          <PublicationCard
-            v-for="(pub, pubIndex) in section.items"
-            :key="pubIndex"
-            :publication="pub"
-          />
+          <div class="animate-card" v-for="(pub, pubIndex) in section.items" :key="pubIndex">
+            <PublicationCard :publication="pub" />
+          </div>
         </div>
       </section>
     </div>

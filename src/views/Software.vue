@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { onMounted } from 'vue'
 import SoftwareCard from '../components/SoftwareCard.vue'
+import { useScrollAnimation } from '../composables/useScrollAnimation'
 
 interface Link {
   type: 'paper' | 'github' | 'preprint'
@@ -82,19 +84,29 @@ const softwareList: SoftwareItem[] = [
     ],
   },
 ]
+
+const { fadeInUp, staggerFadeInUp } = useScrollAnimation()
+
+onMounted(() => {
+  fadeInUp('.animate-title')
+  fadeInUp('.animate-description')
+  staggerFadeInUp('.animate-card')
+})
 </script>
 
 <template>
   <main class="max-w-7xl mx-auto px-6 py-12">
-    <h1 class="text-4xl font-light text-gray-800 mb-4">Software</h1>
-    <p class="text-gray-600 mb-12 max-w-3xl">
+    <h1 class="animate-title text-4xl font-light text-gray-800 mb-4">Software</h1>
+    <p class="animate-description text-gray-600 mb-12 max-w-3xl">
       Open-source tools and software packages developed by the McVicker Lab for genomic analysis,
       allele-specific mapping, and CRISPR screen analysis.
     </p>
 
     <!-- Software Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <SoftwareCard v-for="(software, index) in softwareList" :key="index" :software="software" />
+      <div class="animate-card" v-for="(software, index) in softwareList" :key="index">
+        <SoftwareCard :software="software" />
+      </div>
     </div>
   </main>
 </template>

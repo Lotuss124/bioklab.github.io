@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { onMounted } from 'vue'
 import Carousel from '../components/Carousel.vue'
+import { useScrollAnimation } from '../composables/useScrollAnimation'
 
 const carouselImages = [
   {
@@ -19,6 +21,14 @@ const carouselImages = [
     alt: 'Microscopy Lab',
   },
 ]
+
+const { fadeInUp, slideInLeft } = useScrollAnimation()
+
+onMounted(() => {
+  fadeInUp('.animate-title')
+  fadeInUp('.animate-text')
+  slideInLeft('.animate-pillar')
+})
 </script>
 
 <template>
@@ -29,18 +39,18 @@ const carouselImages = [
     <!-- Main Content -->
     <div class="max-w-6xl mx-auto px-6 py-12">
       <!-- Welcome Section -->
-      <h1 class="text-3xl md:text-4xl font-light text-gray-800 mb-6">
+      <h1 class="animate-title text-3xl md:text-4xl font-light text-gray-800 mb-6">
         Welcome to the McVicker Laboratory
       </h1>
 
-      <p class="text-gray-700 leading-relaxed mb-4">
+      <p class="animate-text text-gray-700 leading-relaxed mb-4">
         The McVicker Laboratory studies how human genetic variation affects chromatin state and gene
         regulation. Our vision is to understand the regulatory function of every non-coding genetic
         variant in every cell type. This knowledge would reveal biological mechanisms underlying
         disease and support development of personalized therapies to treat disease.
       </p>
 
-      <p class="text-gray-700 leading-relaxed mb-12">
+      <p class="animate-text text-gray-700 leading-relaxed mb-12">
         To achieve this vision we use a combination of natural genetic variation, genome
         perturbations, and computational analysis.
       </p>
@@ -48,7 +58,7 @@ const carouselImages = [
       <!-- Three Pillars Section -->
       <div class="space-y-8">
         <!-- Natural Genetic Variation -->
-        <div class="flex items-start gap-6">
+        <div class="animate-pillar flex items-start gap-6">
           <div class="shrink-0">
             <div class="w-32 h-32 rounded-full bg-green-200 flex items-center justify-center">
               <svg class="w-16 h-16 text-green-800" fill="currentColor" viewBox="0 0 24 24">
@@ -74,7 +84,7 @@ const carouselImages = [
         </div>
 
         <!-- Genome Perturbations -->
-        <div class="flex items-start gap-6">
+        <div class="animate-pillar flex items-start gap-6">
           <div class="shrink-0">
             <div class="w-32 h-32 rounded-full bg-blue-200 flex items-center justify-center">
               <svg class="w-16 h-16 text-blue-800" fill="currentColor" viewBox="0 0 24 24">
@@ -92,7 +102,7 @@ const carouselImages = [
         </div>
 
         <!-- Computational Analysis -->
-        <div class="flex items-start gap-6">
+        <div class="animate-pillar flex items-start gap-6">
           <div class="shrink-0">
             <div class="w-32 h-32 rounded-full bg-red-200 flex items-center justify-center">
               <svg class="w-16 h-16 text-red-800" fill="currentColor" viewBox="0 0 24 24">
