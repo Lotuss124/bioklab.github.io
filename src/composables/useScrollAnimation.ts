@@ -123,7 +123,7 @@ export function useScrollAnimation() {
           opacity: 1,
           y: 0,
           duration: 0.3,
-          delay: index <= 3 ? index * 0.1 : 0, // 只有前4个元素有交错延迟，后面的立即播放
+          delay: index < 3 ? index * 0.1 : 0, // 只有前4个元素有交错延迟，后面的立即播放
           ease: 'power2.out',
           scrollTrigger: {
             trigger: element, // 每个元素独立的触发器

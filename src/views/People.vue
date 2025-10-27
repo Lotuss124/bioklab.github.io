@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import PersonCard from '../components/PersonCard.vue'
+import PersonModal from '../components/PersonModal.vue'
 import { useScrollAnimation } from '../composables/useScrollAnimation'
 
 interface Link {
@@ -20,6 +21,22 @@ interface Person {
 interface TeamSection {
   title: string
   members: Person[]
+}
+
+const selectedPerson = ref<Person | null>(null)
+const isModalOpen = ref(false)
+
+const openPersonModal = (person: Person) => {
+  selectedPerson.value = person
+  isModalOpen.value = true
+}
+
+const closePersonModal = () => {
+  isModalOpen.value = false
+  // 延迟清空数据，等待动画结束
+  setTimeout(() => {
+    selectedPerson.value = null
+  }, 300)
 }
 
 const team: TeamSection[] = [
@@ -98,15 +115,18 @@ onMounted(() => {
         <!-- Members Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div
-            class="animate-card "
+            class="animate-card"
             v-for="(member, memberIndex) in section.members"
             :key="memberIndex"
           >
-            <PersonCard :person="member" />
+            <PersonCard :person="member" @click="openPersonModal(member)" />
           </div>
         </div>
       </section>
     </div>
+
+    <!-- Person Details Modal -->
+    <PersonModal :person="selectedPerson" :is-open="isModalOpen" @close="closePersonModal" />
   </main>
 </template>
 

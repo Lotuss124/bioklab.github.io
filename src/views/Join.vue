@@ -7,7 +7,7 @@
       <img
         src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1200&h=400&fit=crop"
         alt="Salk Institute"
-        class="w-full h-72 object-cover"
+        class="w-full h-72 md:h-96 xl:h-128 object-cover"
       />
     </div>
 

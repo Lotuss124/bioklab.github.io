@@ -16,11 +16,16 @@ interface Person {
 defineProps<{
   person: Person
 }>()
+
+const emit = defineEmits<{
+  click: []
+}>()
 </script>
 
 <template>
   <div
-    class="bg-white shadow-md rounded-lg  hover:shadow-xl transition-shadow duration-300 overflow-hidden group"
+    @click="emit('click')"
+    class="bg-white shadow-md rounded-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden group cursor-pointer"
   >
     <!-- Card Content -->
     <div class="p-6">
@@ -42,7 +47,7 @@ defineProps<{
       </div>
 
       <!-- Bio -->
-      <p class="text-sm text-gray-600 leading-relaxed mb-4 text-left line-clamp-6">
+      <p class="text-sm text-gray-600 leading-relaxed mb-4 text-left line-clamp-4">
         {{ person.bio }}
       </p>
 
@@ -55,6 +60,7 @@ defineProps<{
           v-for="(link, linkIndex) in person.links"
           :key="linkIndex"
           :href="link.url"
+          @click.stop
           class="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium rounded-full transition-colors"
           :class="{
             'bg-blue-100 text-blue-700 hover:bg-blue-200': link.type === 'cv',
@@ -104,9 +110,10 @@ defineProps<{
 
 <style scoped>
 /* Line clamp utility for bio text */
-.line-clamp-6 {
+.line-clamp-4 {
   display: -webkit-box;
-  -webkit-line-clamp: 6;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
