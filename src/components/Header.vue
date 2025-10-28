@@ -18,7 +18,12 @@ const closeMobileMenu = () => {
     <nav class="max-w-7xl mx-auto px-6 py-4">
       <div class="flex items-center justify-between">
         <!-- Lab Name -->
-        <div class="text-lg font-light">McVicker Lab</div>
+        <RouterLink
+          to="/"
+          class="text-lg font-bold hover:text-gray-300 transition-colors duration-200 cursor-pointer"
+        >
+          McVicker Lab
+        </RouterLink>
 
         <!-- Desktop Navigation Links -->
         <ul class="hidden md:flex items-center gap-1 text-sm">

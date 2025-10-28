@@ -53,22 +53,27 @@
             </h2>
           </div>
 
-          <!-- Map Image -->
+          <!-- Map Embed -->
           <div class="p-6">
-            <img
-              src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&h=600&fit=crop"
-              alt="Salk Institute Location Map"
-              class="w-full h-auto border border-gray-300"
-            />
+            <div class="relative w-full" style="padding-bottom: 75%">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.8147206894323!2d113.96587147609534!3d22.58603197948214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3403f26280c42af7%3A0x8d21a53a479fa4ca!2sHarbin%20Institute%20of%20Technology%20Shenzhen%20Graduate%20School%20%EF%BC%88Southwest%20Gate%EF%BC%89!5e0!3m2!1sen!2shk!4v1761617224543!5m2!1sen!2shk"
+                class="absolute inset-0 w-full h-full border border-gray-300"
+                style="border: 0"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
             <p class="text-xs text-gray-600 mt-4 text-center">
-              10010 North Torrey Pines Road, La Jolla, CA 92037
+              Harbin Institute of Technology Shenzhen Graduate School
             </p>
           </div>
 
           <!-- Map Link -->
           <div class="px-6 pb-6">
             <a
-              href="https://maps.google.com/?q=Salk+Institute+for+Biological+Studies,La+Jolla,CA"
+              href="https://www.google.com/maps/search/harbin+institute+of+technology+shenzhen/@22.5855962,113.9669721,16.5z?entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D"
               target="_blank"
               rel="noopener noreferrer"
               class="block w-full text-center px-6 py-2.5 bg-gray-800 text-white text-sm font-medium hover:bg-gray-900 transition-colors uppercase tracking-wide"

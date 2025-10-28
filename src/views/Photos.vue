@@ -1,10 +1,20 @@
 <script setup lang="ts">
+import { onMounted } from 'vue'
+import { useScrollAnimation } from '@/composables/useScrollAnimation'
+
 interface PhotoEntry {
   date: string
   title: string
   description: string
   image: string
 }
+
+const { fadeInUp, staggerFadeInUp, cleanup } = useScrollAnimation()
+
+onMounted(() => {
+  fadeInUp('.animate-title')
+  staggerFadeInUp('.animate-photo', {}, 3)
+})
 
 const photos: PhotoEntry[] = [
   {
@@ -52,7 +62,7 @@ const photos: PhotoEntry[] = [
 
 <template>
   <main class="max-w-7xl mx-auto px-6 py-12">
-    <h1 class="text-4xl font-light text-gray-800 mb-12">Photos</h1>
+    <h1 class="text-4xl font-light text-gray-800 mb-12 animate-title">Photos</h1>
 
     <!-- Timeline Container -->
     <div class="relative">
@@ -63,7 +73,7 @@ const photos: PhotoEntry[] = [
 
       <!-- Timeline Entries -->
       <div class="space-y-12">
-        <div v-for="(photo, index) in photos" :key="index" class="relative">
+        <div v-for="(photo, index) in photos" :key="index" class="relative animate-photo">
           <!-- Timeline Dot - Mobile: left side, Desktop: center -->
           <div
             class="absolute top-8 w-4 h-4 rounded-full bg-blue-600 ring-4 ring-white z-10 left-4 -translate-x-1/2 md:left-1/2"
