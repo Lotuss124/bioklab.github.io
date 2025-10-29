@@ -16,7 +16,7 @@ onMounted(() => {
   staggerFadeInUp('.animate-photo', {}, 3)
 })
 
-// 照片，一个date代表时间，title代表标题，description代表描述，image代表照片
+// 照片，date代表时间，title代表标题，description代表描述，image代表照片
 // 考虑到UI排版，一个时间点只能添加一张图片
 // 例：
 // {

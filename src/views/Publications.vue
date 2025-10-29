@@ -19,7 +19,7 @@ interface PublicationSection {
   items: Publication[]
 }
 
-// 论文，一个authors代表作者，year代表年份，title代表标题，journal代表期刊，type代表类型，link代表链接（可为空，则显示纯文本）
+// 论文，authors代表作者，year代表年份，title代表标题，journal代表期刊，type代表类型，link代表链接（可为空，则显示纯文本）
 // correspondingAuthor代表通讯作者姓名（可选），填写后会在作者列表中加粗显示该作者（不区分大小写）
 // type为preprint代表预印本，journal代表期刊，conference代表会议
 // 例：

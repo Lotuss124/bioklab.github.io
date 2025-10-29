@@ -4,6 +4,10 @@ import PersonCard from '../components/PersonCard.vue'
 import PersonModal from '../components/PersonModal.vue'
 import { useScrollAnimation } from '../composables/useScrollAnimation'
 
+// 这是一个图片引入示例
+import avatar from '@avatar/avatar.jpg'
+
+
 // 这是人物卡片下的链接，一个type代表链接类型，url代表链接地址，label代表链接标签
 // 我这里写了三种链接，type为cv代表简历，scholar代表学术认证，email代表邮箱，如果需要添加可以联系我
 // url为空时显示为普通文本，不可点击
@@ -59,7 +63,8 @@ const team: TeamSection[] = [
       {
         name: 'Graham McVicker',
         role: 'Principal Investigator',
-        image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop',
+        // 使用引入的图片
+        image: avatar,
         bio: 'Graham received his B.Sc. in Computer Science from the University of British Columbia and subsequently worked on the Ensembl Genome Browser at the European Bioinformatics Institute. Graham then did his Ph.D. with Phil Green at the University of Washington where he studied how mutation and selection shape human genetic variation. In his postdoctoral research with Jonathan Pritchard at the University of Chicago and Stanford University, Graham researched how human genetic variation affects chromatin state. Since 2016, Graham has been a PI in the Laboratory of Genetics and the Integrative Biology Laboratory at the Salk Institute.',
         links: [
           { type: 'cv', url: '#', label: 'CV' },

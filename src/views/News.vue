@@ -9,7 +9,7 @@ interface TimelineEntry {
   items: NewsItem[]
 }
 
-// 时间线，一个date代表时间，items代表新闻，text代表新闻内容，link代表新闻链接
+// 时间线，date代表时间，items代表新闻，text代表新闻内容，link代表新闻链接
 // link为空代表不加链接，如：{ text: '新闻1' }
 // 可以添加多个时间线，如：
 // {

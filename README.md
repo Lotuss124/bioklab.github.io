@@ -6,7 +6,6 @@
 
 - [技术栈](#技术栈)
 - [项目结构](#项目结构)
-- [快速开始](#快速开始)
 - [如何修改内容](#如何修改内容)
 - [部署说明](#部署说明)
 
@@ -42,7 +41,7 @@ Lab-introduction/
 │   │   ├── PersonModal.vue # 人物详情弹窗
 │   │   ├── PublicationCard.vue # 论文卡片
 │   │   └── SoftwareCard.vue    # 软件卡片
-│   ├── composables/        
+│   ├── composables/
 │   │   └── useScrollAnimation.ts # 滚动动画
 │   ├── router/             # 路由配置
 │   │   └── index.ts
@@ -57,34 +56,6 @@ Lab-introduction/
 ├── vite.config.ts          # Vite配置
 └── tsconfig.json           # TypeScript配置
 ```
-
-## 快速开始
-
-### 环境要求
-
-- Node.js: ^20.19.0 或 >=22.12.0
-- npm 或 yarn
-
-### 安装依赖
-
-```bash
-npm install
-```
-
-### 开发模式
-
-```bash
-npm run dev
-```
-
-访问 `http://localhost:5173` 查看网站。
-
-### 构建生产版本（包括github page）
-
-```bash
-npm run deploy
-```
-
 
 ## 如何修改内容
 
@@ -335,7 +306,21 @@ const menuItems = [
 
 ## 部署说明
 
+### 环境要求
+
+- Node.js: ^20.19.0 或 >=22.12.0
+
+### 安装依赖
+
+进入项目目录运行
+
+```bash
+npm install
+```
+
 ### GitHub Pages 部署
+
+1. `git` 链接上 `GitHub` 仓库
 
 1. 修改 `vite.config.ts` 中的 `base` 配置为你的仓库名
 
@@ -348,7 +333,9 @@ base: '/<仓库名>/'
 ```bash
 npm run deploy
 ```
-3. 在GitHub打开page代理
+
+3. 不出意外部署成功，可在 `github` 仓库的 `settings/page` 中查看，之后每次修改只用运行 `npm run deploy` 和提交修改即可，如有问题可联系我
+
 ### 其他部署平台
 
 构建后的文件在 `dist` 目录，可以部署到：
@@ -363,7 +350,90 @@ npm run deploy
 
 A: 替换 public 文件夹中的 favicon.ico 就可以了，注意新的图标名字和格式不要变。
 
+### Q: 怎么引入图片
+
+A: 在 Vite 项目中有两种图片引入方式：
+
+#### 方式一：使用本地图片（推荐）
+
+1. **放置图片文件**
+
+   将图片放在 `src/assets/images` 对应的文件夹中：
+   - `src/assets/images/avatar/` - 人物头像
+   - `src/assets/images/carousel/` - 轮播图
+   - `src/assets/images/photos/` - 相册图片
+
+2. **在组件中导入图片**
+    
+    我已经写好了路劲映射 ：
+
+    - `@avatar` → `src/assets/images/avatar`
+    - `@carousel` → `src/assets/images/carousel`
+    - `@photos` → `src/assets/images/photos`
+    - `@images` → `src/assets/images`
+    - `@` → `src`
+    
+    使用示例如下：
+
+   ```typescript
+   import avatar from '@avatar/avatar.jpg'
+   import photo from '@photos/team-photo.jpg'
+   import banner from '@carousel/banner.png'
+   import bg from '@images/bg.png'
+   ```
+
+3. **使用导入的图片**
+
+   ```typescript
+   const member = {
+     name: 'John Doe',
+     image: avatar, // 使用导入的图片变量
+   }
+   ```
+
+
+
+#### 方式二：使用在线图片 URL
+
+直接使用图片的 URL 地址（如 CDN、图床、Unsplash 等）：
+
+```typescript
+const member = {
+  name: 'Jane Doe',
+  image: 'https://images.unsplash.com/photo-xxx?w=400&h=400',
+}
+```
+
+#### 实际示例
+
+参考 `src/views/People.vue` 中的用法：
+
+```typescript
+// 导入本地图片
+import avatar from '@avatar/avatar.jpg'
+
+const team = [
+  {
+    title: 'Principal Investigator',
+    members: [
+      {
+        name: 'Graham McVicker',
+        image: avatar, // 使用本地图片
+      },
+    ],
+  },
+  {
+    title: 'Postdoctoral Scholars',
+    members: [
+      {
+        name: 'Shanna Lavalle',
+        image: 'https://images.unsplash.com/photo-xxx', // 使用在线URL
+      },
+    ],
+  },
+]
+```
 
 ---
 
-**最后更新**: 2025年1月
+**最后更新**: 2025年10月29日

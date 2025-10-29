@@ -71,7 +71,7 @@ onUnmounted(() => {
       <div class="fixed inset-0 bg-black/50 backdrop-blur-md transition-colors duration-300"></div>
 
       <!-- Modal Container -->
-      <div class="flex min-h-full items-center justify-center p-4">
+      <div class="flex min-h-full items-center justify-center p-0 md:p-4">
         <Transition
           enter-active-class="transition ease-out duration-300"
           enter-from-class="opacity-0 scale-95"
@@ -102,7 +102,7 @@ onUnmounted(() => {
             </button>
 
             <!-- Modal Content -->
-            <div class="p-8">
+            <div class="p-8 ">
               <!-- Header with Image and Basic Info -->
               <div class="flex flex-col md:flex-row gap-6 mb-6">
                 <!-- Avatar -->

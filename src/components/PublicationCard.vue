@@ -6,7 +6,7 @@ interface Publication {
   journal: string
   type: 'preprint' | 'journal' | 'conference'
   link?: string
-  correspondingAuthor?: string // 通讯作者姓名，用于加粗显示
+  correspondingAuthor?: string 
 }
 
 const props = defineProps<{
@@ -14,7 +14,7 @@ const props = defineProps<{
 }>()
 
 function formatAuthors(authors: string, correspondingAuthor?: string): string {
-  // 如果指定了通讯作者，则加粗该作者；否则默认加粗 McVicker G
+  // 如果指定了通讯作者，则加粗该作者
   const authorToHighlight = correspondingAuthor || ''
   // 使用正则表达式匹配作者名（包含可能的 # 或 * 符号）
   const regex = new RegExp(`${authorToHighlight.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[#*]?`, 'g')

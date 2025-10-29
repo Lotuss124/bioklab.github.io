@@ -22,12 +22,12 @@ const carouselImages = [
   },
 ]
 
-const { fadeInUp, slideInLeft } = useScrollAnimation()
+const { fadeInUp, staggerFadeInUp } = useScrollAnimation()
 
 onMounted(() => {
   fadeInUp('.animate-title')
   fadeInUp('.animate-text')
-  slideInLeft('.animate-pillar')
+  staggerFadeInUp('.animate-pillar')
 })
 </script>
 
@@ -38,7 +38,6 @@ onMounted(() => {
 
     <!-- 主要内容 -->
     <div class="max-w-6xl mx-auto px-6 py-12">
-      <!-- 欢迎部分 -->
       <h1 class="animate-title text-3xl md:text-4xl font-light text-gray-800 mb-6">
         Welcome to the McVicker Laboratory
       </h1>
@@ -55,14 +54,18 @@ onMounted(() => {
         perturbations, and computational analysis.
       </p>
 
-      <!-- 三个横向卡片部分 -->
-      <div class="space-y-8">
-        <div class="animate-pillar flex items-start gap-6">
+      <!-- 三个研究方向卡片 -->
+      <div class="space-y-8 md:space-y-10">
+        <div
+          class="animate-pillar flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-6"
+        >
           <div class="shrink-0">
-            <div class="w-32 h-32 rounded-full bg-green-200 flex items-center justify-center">
+            <div
+              class="w-24 h-24 md:w-32 md:h-32 rounded-full bg-green-200 flex items-center justify-center"
+            >
               <!-- DNA图标 -->
               <svg
-                class="w-16 h-16 text-green-800"
+                class="w-12 h-12 md:w-16 md:h-16 text-green-800"
                 fill="currentColor"
                 viewBox="0 0 640 640"
                 xmlns="http://www.w3.org/2000/svg"
@@ -73,9 +76,11 @@ onMounted(() => {
               </svg>
             </div>
           </div>
-          <div class="flex-1">
-            <h2 class="text-xl font-semibold text-gray-800 mb-2">Natural Genetic Variation.</h2>
-            <p class="text-gray-700 leading-relaxed">
+          <div class="flex-1 text-center md:text-left">
+            <h2 class="text-lg md:text-xl font-semibold text-gray-800 mb-2">
+              Natural Genetic Variation.
+            </h2>
+            <p class="text-gray-700 leading-relaxed text-sm md:text-base">
               We use germline genetic variation as well as somatic mutations to identify genetic
               variants associated with changes in chromatin and gene expression. To identify these
               associations, we map molecular quantitative trait loci (QTLs) and analyze allele
@@ -84,12 +89,16 @@ onMounted(() => {
           </div>
         </div>
 
-        <div class="animate-pillar flex items-start gap-6">
+        <div
+          class="animate-pillar flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-6"
+        >
           <div class="shrink-0">
-            <div class="w-32 h-32 rounded-full bg-blue-200 flex items-center justify-center">
+            <div
+              class="w-24 h-24 md:w-32 md:h-32 rounded-full bg-blue-200 flex items-center justify-center"
+            >
               <!-- 试管icon -->
               <svg
-                class="w-16 h-16 text-blue-800"
+                class="w-12 h-12 md:w-16 md:h-16 text-blue-800"
                 fill="currentColor"
                 viewBox="0 0 640 640"
                 xmlns="http://www.w3.org/2000/svg"
@@ -100,21 +109,27 @@ onMounted(() => {
               </svg>
             </div>
           </div>
-          <div class="flex-1">
-            <h2 class="text-xl font-semibold text-gray-800 mb-2">Genome Perturbations.</h2>
-            <p class="text-gray-700 leading-relaxed">
+          <div class="flex-1 text-center md:text-left">
+            <h2 class="text-lg md:text-xl font-semibold text-gray-800 mb-2">
+              Genome Perturbations.
+            </h2>
+            <p class="text-gray-700 leading-relaxed text-sm md:text-base">
               We use CRISPR technologies and reporter assays to perturb the genome and determine how
               sequences affect chromatin and gene expression.
             </p>
           </div>
         </div>
 
-        <div class="animate-pillar flex items-start gap-6">
+        <div
+          class="animate-pillar flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-6"
+        >
           <div class="shrink-0">
-            <div class="w-32 h-32 rounded-full bg-red-200 flex items-center justify-center">
+            <div
+              class="w-24 h-24 md:w-32 md:h-32 rounded-full bg-red-200 flex items-center justify-center"
+            >
               <!-- 滴管icon -->
               <svg
-                class="w-16 h-16 text-red-800"
+                class="w-12 h-12 md:w-16 md:h-16 text-red-800"
                 fill="currentColor"
                 viewBox="0 0 640 640"
                 xmlns="http://www.w3.org/2000/svg"
@@ -125,9 +140,11 @@ onMounted(() => {
               </svg>
             </div>
           </div>
-          <div class="flex-1">
-            <h2 class="text-xl font-semibold text-gray-800 mb-2">Computational Analysis.</h2>
-            <p class="text-gray-700 leading-relaxed">
+          <div class="flex-1 text-center md:text-left">
+            <h2 class="text-lg md:text-xl font-semibold text-gray-800 mb-2">
+              Computational Analysis.
+            </h2>
+            <p class="text-gray-700 leading-relaxed text-sm md:text-base">
               We use machine learning method and statistical methods analyze genomic datasets and to
               predict which variants affect chromatin and gene expression.
             </p>
