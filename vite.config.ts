@@ -23,5 +23,5 @@ export default defineConfig({
     },
   },
   // base: '/<仓库名>/',
-  base: '/bioklab.github.io/',
+  base: '/',
 })
