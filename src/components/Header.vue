@@ -21,7 +21,7 @@ const closeMobileMenu = () => {
           to="/"
           class="text-lg font-bold hover:text-gray-300 transition-colors duration-200 cursor-pointer"
         >
-          McVicker Lab
+          BioKLab
         </RouterLink>
 
         <ul class="hidden md:flex items-center gap-1 text-sm">
